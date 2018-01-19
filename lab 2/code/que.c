@@ -6,11 +6,13 @@
   handle cases when head is null
 */
 
+//static int qsize;
+
 Queue newQ(){
 	Queue q = (Queue)malloc(sizeof(struct queue));
 	q->head = NULL;
 	q->tail = NULL;
-	qsize=0;
+	q->qsize=0;
 }
 
 int isEmptyQ(Queue q){
@@ -40,10 +42,10 @@ Queue delQ(Queue q){
        // printf("11111111111111111111111\n");
 		q->head = NULL;
 		q->tail = NULL;
-		qsize--;	
+		q->qsize--;	
 	}
 	else{
-		qsize--;
+		q->qsize--;
 		q->head = q->head->next;	
 	}
 	return q;
@@ -67,7 +69,7 @@ Queue addQ(Queue q ,Element e){
 		q->tail->next = e;
 		q->tail = e;
 	}
-	qsize++;
+	q->qsize++;
 	return q;
 }
 
@@ -80,5 +82,5 @@ int lengthQ(Queue q){
 		head = head->next;	
 	}
 	return (++size);*/
-	return qsize;
+	return q->qsize;
 }

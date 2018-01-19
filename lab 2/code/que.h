@@ -1,7 +1,7 @@
 #ifndef QUE_H
 #define QUE_H
 
-int qsize;
+//extern int qsize;
 
 struct element{
 	int data;
@@ -12,6 +12,7 @@ struct element{
 struct queue{
 	struct element *head;
 	struct element *tail;
+    int qsize;
 };
 
 typedef struct element *Element;
