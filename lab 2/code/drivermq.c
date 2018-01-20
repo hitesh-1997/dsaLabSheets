@@ -1,5 +1,4 @@
 #include "MultiQ.h"
-#include "MultiQ.h"
 #include "que.h"
 #include <stdio.h>
 #include <stdlib.h>
