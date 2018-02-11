@@ -19,10 +19,35 @@ void swap(Record arr,int i,int j);
 void insertionSort(Record arr,int n,int* add);
 
 unsigned long long int stack=0;
+int totalHeap=0;
+
+
+/*
+ * 
+ * note V.IMP. allocate last 4 bytes of mem to size in myalloc
+ */
+
+
+void *myalloc(size_t sz){
+	void *temp = malloc(sz+4);
+    if(!temp){
+        printf("can't allocate more mem\n");
+        return NULL;
+    }
+	int *first = (int*)temp;
+	*(first+sz) = (sz+4);	
+	totalHeap+=(sz+4);
+  //  void *ptr = ++first;
+    printf("starting addrresssssssss ********- %u\n",temp);
+   // printf("returned addrresssssssss ********- %u\n",ptr);
+    return temp;
+	//return temp;
+}
+
 
 int main(int argv,char **argc){
 	int sz=50;
-	Record arr = (Record)malloc(sz*sizeof(struct rec));
+	Record arr = (Record)myalloc(sz*sizeof(struct rec));
    // printf("%d\n",atoi(argc[1]));
 	FILE *fp = fopen("1000.txt","r");
 	if(!fp){
@@ -110,21 +135,6 @@ void insertInOrder(Record arr,int n,struct rec x,int* add){
 		insertInOrder(arr,n-1,x,add);	
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
