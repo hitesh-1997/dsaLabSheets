@@ -1,4 +1,5 @@
 #include "que.h"
+#include "mem.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,20 +10,20 @@
 //static int qsize;
 
 Queue newQ(){
-	Queue q = (Queue)malloc(sizeof(struct queue));
+	Queue q = (Queue)myalloc(sizeof(struct queue));
 	q->head = NULL;
 	q->tail = NULL;
 	q->qsize=0;
 }
 
-int isEmptyQ(Queue q){
+boolean isEmptyQ(Queue q){
     if(q->head==NULL){
        // printf("head is null\n");
-        return 1;
+        return true;
     }
     else{
         //printf("head is not null");
-        return 0;
+        return false;
     }
     
 }

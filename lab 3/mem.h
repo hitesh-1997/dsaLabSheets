@@ -3,7 +3,17 @@
 
 #include <stddef.h>
 #define ull unsigned long long int
-extern int totalHeap;
+
+extern ull heap;
+extern ull maxheap;
+
+void *myalloc(ull size);
+void myfree(void *ptr);
+void *myrealloc(void *ptr,ull size);
+ 
+/*
+
+using structures
 
 struct memory{
 	void *ptr;
@@ -12,17 +22,13 @@ struct memory{
 
 typedef struct memory *Mem; 
 
-/*
-using structures
+
+
 
 Mem myalloc(size_t sz);
 void myfree(Mem m);
 */
 
 // 2nd method using extra 4bytes for storing the size
-
-void *myalloc(int sz);
-void myfree(void *ptr);
-
 
 #endif

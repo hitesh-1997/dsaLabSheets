@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h>         // size_t defined
 #include <stddef.h>
 #include <math.h>
 int bits=0;

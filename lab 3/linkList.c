@@ -8,12 +8,12 @@ LL createList(int n){
     LL link = (LL)myalloc(sizeof(struct ll));
     link->head = NULL;
     link->size=0;
-    printf("size before allocating nodes- %d\n",totalHeap);
+    printf("size before allocating nodes- %d\n",maxheap);
     for(i=0;i<n;i++){
         insertInFront(link);
-        //printf("size during allocating nodes- %d\n",totalHeap);
+        //printf("size during allocating nodes- %d\n",maxheap);
     }
-    printf("size after allocating nodes- %d\n",totalHeap);
+    printf("size after allocating nodes- %d\n",maxheap);
     return link;
 }
 

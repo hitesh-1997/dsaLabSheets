@@ -1,5 +1,5 @@
 #include "MultiQ.h"
-#include "MultiQ.h"
+#include "mem.h"
 #include "que.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,7 +8,7 @@
 MultiQ createMQ(int num){
 	totalsize=0;
     mqsize = num;
-	MultiQ mq = (MultiQ)malloc(num*sizeof(Queue));
+	MultiQ mq = (MultiQ)myalloc(num*sizeof(Queue));
     int i;
     for(i=0;i<num;i++){
         mq[i] = newQ();

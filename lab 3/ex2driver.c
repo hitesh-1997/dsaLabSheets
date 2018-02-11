@@ -1,20 +1,24 @@
+#include "mem.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
 #include <math.h>
-#include "mem.h"
+
 
 
 int main(){
     
 	ull mb=1048576;
+    double div = 1024*1048576.0;
 	int *arr = (int*)myalloc(mb);
 	while(arr){
 		mb*=2;
-		arr = (int*)myalloc(mb);
+		//mb = rand()%15000+10000;
+        arr = (int*)myalloc(mb);
 		if(!arr)
 			break;
-		printf("allocated size in mb- %llu\n",(totalHeap/1048576));
+        
+		printf("allocated size in gb- %lf\n",maxheap/div);
 		myfree(arr);
 	}
 	printf("loop finished\n");

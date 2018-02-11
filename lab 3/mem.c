@@ -3,14 +3,12 @@
 #include <stdlib.h>
 #include <stddef.h>
 
-int totalHeap=0;
-
 /*
 
 using structures
 
 Mem myalloc(size_t sz){
-	Mem m = (Mem)malloc(sizeof(struct memory)+4);
+	Mem m = (Mem)malloc(sizeof(struct memory));
 	m->ptr = malloc(sz); 
 	m->sizeAlloc = sz;
 	totalHeap+=sz;
@@ -24,27 +22,42 @@ void myfree(Mem m){
 }
 */
 
-void *myalloc(int sz){
-	void *temp = malloc(sz+4);
-    if(!temp){
-        printf("can't allocate more mem\n");
+ull heap=0;
+ull maxheap=0;
+
+void *myalloc(ull size){
+	void* temp = malloc(size+sizeof(ull));
+    if(!temp)
         return NULL;
-    }
-	int *first = (int*)temp;
-	*first = (sz+4);	
-	totalHeap+=(sz+4);
-    void *ptr = ++first;
-    //printf("starting addrresssssssss ********- %u\n",temp);
-    //printf("returned addrresssssssss ********- %u\n",ptr);
-    return ptr;
-	//return temp;
+	ull *ptr = (ull*)temp;
+	*ptr  = size+sizeof(ull);
+	++ptr;
+	heap+=(size+sizeof(ull));
+	if(heap>maxheap)
+        maxheap=heap;
+	//prullf("total heap:- %d\n",heap);
+	return temp+sizeof(ull);
 }
 
 void myfree(void *ptr){
-	//printf("************************\n");
-	int *temp = (int*)ptr;
-	//printf("*********************= %llu\n",*temp);
-	totalHeap-=*temp;
-	free(ptr);
+	ull *temp = (ull*)ptr;
+	--temp;
+	heap-=*temp;
+	//prullf("total heap:- %d\n",heap);
+	//printf("size alocates:- %llu\n",*temp);
+	free(ptr-sizeof(ull));
 }
 
+void *myrealloc(void *ptr,ull size){
+	void *temp = ptr-sizeof(ull);
+	ull *t = (ull*)temp;
+	ull sizeold = *t;
+	heap-=sizeold;
+	heap+=(size+sizeof(ull));
+	temp = realloc(temp,size+sizeof(ull));
+	t = (ull*)temp;
+	*t=(size+sizeof(ull));
+	//prullf("total heap:- %d\n",heap);
+	//prullf("size alocates:- %d\n",*t);
+	return ++t;
+}

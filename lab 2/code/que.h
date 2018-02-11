@@ -17,12 +17,15 @@ struct queue{
 
 typedef struct element *Element;
 typedef struct queue *Queue;
+typedef enum {false=0,true=1} boolean;
+
 
 Queue newQ();
-int isEmptyQ(Queue q);
+boolean isEmptyQ(Queue q);
 Queue delQ(Queue q);
 Element front(Queue q);
 Queue addQ(Queue q , Element e);
 int lengthQ(Queue q);
+
 
 #endif
