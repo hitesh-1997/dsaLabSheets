@@ -24,5 +24,7 @@ void traverse(LL);
 int hasCycle(LL link);
 LL createCycle(LL link);
 LL createList(int n);
+Node cycleNode(LL link);
+LL makecircular(LL link);
 
 #endif

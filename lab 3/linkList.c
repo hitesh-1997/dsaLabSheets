@@ -74,6 +74,17 @@ int deleteAtEnd(LL st){
 }
 
 void traverse(LL st){
+    if(hasCycle(st)){
+        Node ptr = cycleNode(st);
+        Node temp = ptr;
+        do{
+            printf("%d  ",temp->data);
+            temp = temp->next;
+        }while(ptr!=temp);
+        printf("\n");
+        return;
+    }
+    
     Node head = st->head;
     while(head){
         printf("%d  ",head->data);
@@ -99,8 +110,10 @@ int hasCycle(LL link){
 LL createCycle(LL link){
     int ch = rand()%2;
     printf("random for cycle= %d\n",ch);
-    if(!ch)
+    if(ch){
+        printf("cycle not created\n");
         return link;
+    }
     int n = link->size;
     int r = rand()%n;
     Node head = link->head;
@@ -113,4 +126,41 @@ LL createCycle(LL link){
     ptr->next = ptr2;
     return link;
 }
+
+Node cycleNode(LL link){
+    if(link->head == NULL)
+        return NULL;
+    Node hare = link->head;
+    Node tor = link->head;
+    do{
+        if(hare->next == NULL || tor->next==NULL || tor->next->next==NULL)
+            return NULL;
+        hare = hare->next;
+        tor = tor->next->next;
+    }while(hare!=tor);
+    return hare;
+}
+
+LL makecircular(LL link){
+    Node head = link->head;
+    Node ptr = head;
+    if(!hasCycle(link)){
+        while(ptr->next != NULL)
+            ptr = ptr->next;
+        ptr->next = head;
+        return link;
+    }
+    Node temp = cycleNode(link);
+    while(ptr->next != temp->next){
+        Node curr = ptr;
+        ptr = ptr->next;
+        temp = temp->next;
+        myfree(curr);
+    }
+    link->head = ptr->next;
+    ptr->next = NULL;
+    myfree(ptr);
+    return link;
+}
+
 
