@@ -1,0 +1,16 @@
+time taken for n= : 100 is = 0.000994
+ and stack used= 3341
+time taken for n= : 200 is = 0.003164
+ and stack used= 6737
+time taken for n= : 400 is = 0.010583
+ and stack used= 13649
+time taken for n= : 800 is = 0.036907
+ and stack used= 27809
+time taken for n= : 1600 is = 0.134207
+ and stack used= 56609
+time taken for n= : 3200 is = 0.509518
+ and stack used= 114209
+time taken for n= : 6400 is = 1.944612
+ and stack used= 229409
+time taken for n= : 12800 is = 7.617384
+ and stack used= 459809

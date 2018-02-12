@@ -9,7 +9,7 @@ q1.o : q1.c
 	$(CC) $(FLAGS) q1.c
 
 run:
-	./test $(INT)
+	./test # $(INT)
 
 clean:
 	rm -rf *o test
