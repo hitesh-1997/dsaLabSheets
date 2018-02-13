@@ -3,6 +3,8 @@
 #include "def.h"
 #include "merge.h"
 
+#ifndef MIN_MAX
+#define MIN_MAX
 double max(double x,double y){
 	if(x>y)
 		return x;
@@ -16,6 +18,8 @@ double min(double x,double y){
 	else
 		return x;
 }
+
+#endif
 
 //sz = n
 void merge(Element *Ls1, int sz1, Element *Ls2, int sz2, Element *Ls,int low,int high){

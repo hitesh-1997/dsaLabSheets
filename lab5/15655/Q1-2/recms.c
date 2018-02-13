@@ -1,24 +1,8 @@
 #include <math.h>
 #include <stdio.h> 
 #include "def.h"
-#include "merge.h
-#ifndef MIN_MAX
-#define MIN_MAX
-double max(double x,double y){
-	if(x>y)
-		return x;
-	else
-		return y;
-}
+#include "merge.h"
 
-double min(double x,double y){
-	if(x>y)
-		return y;
-	else
-		return x;
-}
-
-#endif
 
 // lo=0, high=n-1
 void mergesort(Element *ls,int low,int high){

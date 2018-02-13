@@ -5,7 +5,7 @@
 
 
 
-void itermergesort(Element *ls,int low,int high){
+void mergesort(Element *ls,int low,int high){
 	printf("this is itermergesort *****************\n");
 	int j;
 	int n=high-low+1;

@@ -1,3 +1,6 @@
+#include "mem.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 int heap=0;
 int maxheap=0;

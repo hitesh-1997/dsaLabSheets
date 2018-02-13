@@ -11,8 +11,6 @@ typedef struct record *Record;
 
 Record *readfile(FILE *fp,Record *arr,int *sz);
 
-
-
 int heap=0;
 
 void *myalloc(int size){
@@ -49,65 +47,6 @@ void *myrealloc(void *ptr,int size){
 	return ++t;
 }
 
-
-/*
-int totalheap=0;
-int maxheap=0;
-
-void *myalloc(int n){
-	void *temp = malloc(n+sizeof(int));
-	int *first = (int*)temp;
-	*first = n;
-	totalheap+=n;
-	if(maxheap<totalheap)
-		maxheap = totalheap;	
-	printf("current heap= %llu\n",totalheap);
-	printf("max heap = %llu\n",maxheap);
-	return ++first;
-}
-
-void myfree(void *temp){
-	int *sz = (int*)temp;
-	--sz;
-	totalheap-=*sz;
-	free(temp);
-	
-	printf("current heap= %llu\n",totalheap);
-	printf("max heap = %llu\n",maxheap);
-}
-*/
-
-
-/*
-unsigned int curHeapSize=0;
-unsigned int maxHeapSize=0;
-
-void *myalloc(unsigned int size){
-	void* ptr = malloc(size+sizeof(unsigned int));
-	unsigned int *temp = (unsigned int *)ptr;
-	*temp=(size+sizeof(unsigned int));
-	curHeapSize+=(size+sizeof(unsigned int));
-	
-	if(maxHeapSize<curHeapSize)
-		maxHeapSize = curHeapSize;
-	printf("new allocated curHeap = %llu\n",curHeapSize);
-	printf("new allocated maxHeap = %llu\n",maxHeapSize);
-
-	printf("size allocated = %llu\n",*temp);
-	return ++temp;
-}
-
-void myfree(void *ptr){
-	unsigned int *s = (unsigned int *)ptr;
-	s--;
-	unsigned int size = *s;
-	curHeapSize-=size;
-	free(s);
-	printf("new allocated curHeap = %llu\n",curHeapSize);
-	printf("new allocated maxHeap = %llu\n",maxHeapSize);
-	printf("size allocated = %llu\n",size);
-}
-*/
 
 int main(){
 	Record *arr;
