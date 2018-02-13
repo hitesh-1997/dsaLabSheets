@@ -6,6 +6,9 @@
 CC = gcc
 FLAGS = -c -Wall -g
 
+
+compare: compileRecMS compileiterMS runiterMS runRecMS
+
 compileRecMS : merge.o test.o recms.o
 	$(CC) merge.o test.o recms.o -o test1
 
@@ -18,8 +21,6 @@ runRecMS:
 runiterMS:
 	./test2
 	
-compare: compileRecMS compileiterMS runiterMS runRecMS
-
 merge.o: merge.c merge.h def.h
 	$(CC) $(FLAGS) merge.c
 	

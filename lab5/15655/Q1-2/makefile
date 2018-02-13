@@ -4,7 +4,7 @@
 #  ./test 1
 
 CC = gcc
-FLAGS = -c -Wall -g
+FLAGS = -c -Wall -g -pg
 
 
 compare: compileRecMS compileiterMS runiterMS runRecMS
