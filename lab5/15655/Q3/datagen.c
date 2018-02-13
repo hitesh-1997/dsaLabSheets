@@ -6,8 +6,9 @@ int main(int argv,char **argc){
     FILE *fp = fopen("input.txt","w");
     int i;
     for(i=0;i<number;i++){
-        int x = rand()%20;
+        int x = rand()%(atoi(argc[2]));
         fprintf(fp,"%d\n",x);
     }
+    fclose(fp);
     return 0;
 }
