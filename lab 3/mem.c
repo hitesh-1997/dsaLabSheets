@@ -22,6 +22,9 @@ void myfree(Mem m){
 }
 */
 
+
+
+    
 ull heap=0;
 ull maxheap=0;
 
