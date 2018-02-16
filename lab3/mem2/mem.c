@@ -7,8 +7,9 @@ int maxheap=0;
 
 void *myalloc(int size){
 	void* temp = malloc(size+sizeof(int));
-    if(!temp)
+    if(!temp){
         return NULL;
+    }
 	int *ptr = (int*)temp;
 	*ptr  = size+4;
 	++ptr;
@@ -16,6 +17,7 @@ void *myalloc(int size){
 	if(heap>maxheap)
         maxheap=heap;
 	//printf("total heap:- %d\n",heap);
+	printf("size = %d and total size= %d\n",heap,maxheap);
 	return temp+4;  // instead of 4 use sizeof(int)
 }
 
@@ -26,6 +28,7 @@ void myfree(void *ptr){
 	//printf("total heap:- %d\n",heap);
 	//printf("size alocates:- %d\n",*temp);
 	free(ptr-4);
+	printf("size = %d and total size= %d\n",heap,maxheap);
 }
 
 void *myrealloc(void *ptr,int size){
@@ -39,5 +42,6 @@ void *myrealloc(void *ptr,int size){
 	*t=(size+4);
 	//printf("total heap:- %d\n",heap);
 	//printf("size alocates:- %d\n",*t);
+	printf("size = %d and total size= %d\n",heap,maxheap);
 	return ++t;
 }

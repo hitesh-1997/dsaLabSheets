@@ -37,6 +37,7 @@ int main(){
     printf("after making list circular heap used:- %d\n",heap);
     // for each node sizeof(struct node) i.e 16 + size of(ull) i.e. 8 cleared
     //traverse(link);
-    
+   printf("size = %d and total size= %d\n",heap,maxheap);
+	 
 }
 

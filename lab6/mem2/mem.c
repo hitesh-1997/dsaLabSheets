@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include "mem.h"
 
-int heap=0;
-int maxheap=0;
+long long int heap=0;
+long long int maxheap=0;
 
 void *myalloc(int size){
 	void* temp = malloc(size+sizeof(int));

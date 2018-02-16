@@ -3,7 +3,8 @@
 #include <string.h>
 #include <math.h>
 #include <time.h>
-
+#include "mem.c"
+/*
 int heap=0;
 int maxheap=0;
 
@@ -47,7 +48,7 @@ void *myrealloc(void *ptr,int size){
 	//printf("size alocates:- %d\n",*t);
 	return ++t;
 }
-
+*/
 struct rec{
 	char cardno[20];
 	char bankcode[10];
@@ -128,6 +129,9 @@ int main(int argv,char **argc){
 			break;		
 		}	
 	}*/
+
+	printf("size = %d and total size= %d\n",heap,maxheap);
+	
 
 }
 

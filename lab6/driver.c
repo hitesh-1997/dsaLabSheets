@@ -51,6 +51,8 @@ int main(int argv,char **argc){
 		printf("name is= %s and id = %lld\n",arr[i]->name,arr[i]->id);
 
 	}*/
+	printf("size = %d and total size= %d\n",heap,maxheap);
+	
 
 	int estsz = estimatecutoff(arr,sz);
 	printf("estimatecutoff size is equal to : %d\n",estsz);
@@ -58,15 +60,18 @@ int main(int argv,char **argc){
 	fclose(fp);
 	myfree(index);
 	myfree(init);
+	printf("size = %d and total size= %d\n",heap,maxheap);
+	
 
 	FILE *f = fopen(argc[2],"w");
 	int n = 1e3;
 	for(i=n;i<1e3;i*=10){
 		readforn(argc[1],i,estsz,f);
+		printf("size = %d and total size= %d\n",heap,maxheap);
+	
 	}
-
-	printf("current memory:- %lld\n",heap);
-	printf("max memory:- %lld\n",maxheap);
+	printf("size = %d and total size= %d\n",heap,maxheap);
+	
 }
 
 void readforn(char *name,int n,int estsz,FILE *f){
@@ -309,10 +314,5 @@ void insertsort(Record *arr,int low,int n){ // high = n
        arr[j+1] = temp;
    }
 }
-
-
-
-
-
 
 
