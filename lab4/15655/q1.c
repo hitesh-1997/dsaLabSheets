@@ -37,6 +37,10 @@ void *myrealloc(void *ptr,int size){
 	heap-=sizeold;
 	heap+=(size+4);
 	temp = realloc(temp,size+sizeof(int));
+	if(!temp)
+		return NULL;
+	if(heap>maxheap)
+	    maxheap=heap;
 	t = (int*)temp;
 	*t=(size+4);
 	//printf("total heap:- %d\n",heap);

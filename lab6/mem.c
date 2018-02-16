@@ -2,20 +2,26 @@
 #include <stdlib.h>
 #include "mem.h"
 
-int heap=0;
+long long int heap=0;
+long long int maxheap=0;
 
 void *myalloc(int size){
 	void* temp = malloc(size+sizeof(int));
+    	if(!temp)
+        	return NULL;
 	int *ptr = (int*)temp;
-	*ptr  = size;
+	*ptr  = (size+4);
 	++ptr;
-	heap+=size;
-	
+	heap+=(size+4);
+	if(heap>maxheap)
+	    maxheap=heap;
 	//printf("total heap:- %d\n",heap);
-	return temp+4;
+	return temp+4;  // instead of 4 use sizeof(int)
 }
 
 void myfree(void *ptr){
+	if(!ptr)
+		return;
 	int *temp = (int*)ptr;
 	--temp;
 	heap-=*temp;
@@ -29,10 +35,14 @@ void *myrealloc(void *ptr,int size){
 	int *t = (int*)temp;
 	int sizeold = *t;
 	heap-=sizeold;
-	heap+=size;
+	heap+=(size+4);
 	temp = realloc(temp,size+sizeof(int));
+	if(!temp)
+		return NULL;
+	if(heap>maxheap)
+	    maxheap=heap;
 	t = (int*)temp;
-	*t=size;
+	*t=(size+4);
 	//printf("total heap:- %d\n",heap);
 	//printf("size alocates:- %d\n",*t);
 	return ++t;
