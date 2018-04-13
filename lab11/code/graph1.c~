@@ -1,0 +1,84 @@
+#include "graph1.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int func(Graph g,Vertex v){
+	int sz = g->numv;
+	if(sz==0){
+		g->vlist = (Vertex*)malloc(sizeof(Vertex));
+		g->vlist[0]=v;
+		g->numv++;
+		return 0;
+	}
+	int i=0;
+	while(i<sz){
+		if(g->vlist[i]->data==v->data){
+			return i;	
+		}
+		i++;
+	}
+	g->vlist = (Vertex*)realloc(g->vlist,(sz+1)*sizeof(Vertex));
+	g->vlist[sz]=v;
+	g->numv++;
+	return sz;
+}
+
+LL toposort(Graph g){
+
+}
+
+int main(int argv,char **argc){
+	int init=10;
+	FILE *fp = fopen("input.txt","r");
+	if(!fp){
+		printf("can't open file\n");
+		exit(1);
+	}
+	int x,y;
+	Graph g = (Graph)malloc(sizeof(struct graph));
+	g->elist = (Edge)malloc(init*sizeof(struct edge));
+	g->numv	=0;
+	int i=0;
+	while(fscanf(fp,"%d %d\n",&x,&y)==2){
+		Vertex v1 = createv(x);
+		Vertex v2 = createv(y);
+		int x = func(g,v1);
+		int y = func(g,v2);
+		if(i>=init){
+			g->elist = (Edge)realloc(g->elist,2*init*sizeof(struct edge));
+			init*=2;
+		}	
+		g->elist[i].start=x;
+		g->elist[i].end=y;
+		i++;
+	}			
+	g->elist = (Edge)realloc(g->elist,i*sizeof(struct edge));
+	g->nume=i;
+	printf("printing adj vertex:\n");
+	for(i=0;i<g->numv;i++)
+		printf("for i= %d vertex is= %d\n",i,g->vlist[i]->data);
+	
+	for(i=0;i<g->nume;i++){
+		int x = g->elist[i].start;
+		int y = g->elist[i].end;
+		printf("start= %d, end= %d\n",g->vlist[x]->data,g->vlist[y]->data);
+	}
+	
+	printf("%d %d\n",g->nume,g->numv);
+
+/*	LL list = topoSort(g);
+	
+	printf("\nprinting topological sorted vertices:- \n");
+	Node head = list->head;
+	while(head){
+		printf("%d	",head->data);
+		head=head->next;
+	}
+	printf("\n");
+*/
+}
+
+
+
+

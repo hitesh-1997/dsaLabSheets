@@ -1,0 +1,33 @@
+#ifndef List_H
+#define List_H
+
+#include "mem.h"
+#include "hash.h"
+
+struct record{
+	char *name;
+	int index;
+	int cnt;
+};
+
+struct node{
+    struct record* data;
+    struct node *next;
+};
+
+struct ll{
+    struct node *head;
+    int size;
+};
+
+typedef struct node* Node;
+typedef struct ll* LL;
+
+// methods for the stack
+
+//void insertInFront(LL,struct record*);
+//int deletFromFront(LL st);
+LL createList();
+int insertAtEnd(LL st,struct record *data);
+
+#endif

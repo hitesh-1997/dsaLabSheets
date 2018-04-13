@@ -1,0 +1,27 @@
+#ifndef GMAT_H
+#define GMAT_H
+
+
+struct vertex{
+	int data;
+};
+
+typedef struct vertex *Vertex;
+
+struct graph{
+	Vertex *vlist;
+	int num;
+	int **mat;
+};
+
+typedef struct graph *Graph;
+
+
+Graph create(int num);
+LL getAdj(Graph g,Vertex v);
+Graph addedge(Graph g,Vertex v,Vertex vadj);
+int degree(Graph g,Vertex v);
+void bfs(Graph g);
+
+
+#endif

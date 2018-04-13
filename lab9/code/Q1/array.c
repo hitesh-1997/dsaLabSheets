@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef enum {false,true} boolean;
+
+struct element;
+
+struct element{
+	int data;
+};
+
+struct iterator{
+	struct element *arr;
+	int count;
+	int size;
+};
+
+typedef struct iterator *Iterator;
+
+Iterator createiterator(struct element *arr,int sz){
+	Iterator it = (Iterator)malloc(sizeof(struct iterator));
+	it->arr = arr;
+	it->count=0;
+	it->size=sz;
+	return it;
+}
+
+boolean hasMore(Iterator it){
+	return (it->count != it->size);
+}
+
+struct element getNext(Iterator it){
+	struct element ele = it->arr[it->count];
+	it->count++;
+	return ele;
+}
+
+int main(){
+	struct element *arr = (struct element*)malloc(10*sizeof(struct element));
+	int i;
+	for(i=0;i<10;i++)
+		arr[i].data = i+1;
+		
+	Iterator it = createiterator(arr,10);
+	
+	while(hasMore(it)){
+		printf("%d\n",getNext(it).data);
+	}
+	
+	
+	
+}
+
+
+
+
+
+
+
+
