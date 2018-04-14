@@ -16,8 +16,8 @@ typedef struct ll* LL;
 
 // methods for the stack
 
-extern void insertInFront(LL,int);
-extern int deletFromFront(LL st);
-extern LL createList();
+void insertInFront(LL);
+int deletFromFront(LL st);
+LL createList();
 
 #endif

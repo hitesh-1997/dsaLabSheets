@@ -18,18 +18,20 @@ Queue newQ(){
 
 boolean isEmptyQ(Queue q){
     if(q->head==NULL){
+       // printf("head is null\n");
         return true;
     }
     else{
+        //printf("head is not null");
         return false;
     }
     
 }
 
 Queue delQ(Queue q){
-	Ele head = q->head;
-	Ele tail = q->tail;
-  /*  Ele ptr = head;
+	Element head = q->head;
+	Element tail = q->tail;
+  /*  Element ptr = head;
     printf("\n ************* \n");
     while(ptr){
 		printf("%d  ",ptr->data);
@@ -50,21 +52,24 @@ Queue delQ(Queue q){
 	return q;
 }
 
-struct node* front(Queue q){
+int front(Queue q){
 	return q->head->data;
 }
 
-Queue addQ(Queue q ,struct node* data){
-	Ele e = (Ele)malloc(sizeof(struct ele));
+Queue addQ(Queue q ,int data){
+	Element e = (Element)malloc(sizeof(struct element));
 	e->data = data;
 	e->next = NULL;
-	Ele head = q->head;
-	Ele tail = q->tail;
+	//printf("elment received add: %d\n",e->data);
+	Element head = q->head;
+	Element tail = q->tail;
 	if(!head){
+		//printf("head is null\n");
 		q->head = e;
 		q->tail = e;
 	}
 	else{
+		//printf("in else statement\n");
 		q->tail->next = e;
 		q->tail = e;
 	}
@@ -73,5 +78,13 @@ Queue addQ(Queue q ,struct node* data){
 }
 
 int lengthQ(Queue q){
+	/*Element head = q->head;
+	Element tail = q->tail;
+	int size=0;
+	while(head != tail){
+		size++;
+		head = head->next;	
+	}
+	return (++size);*/
 	return q->qsize;
 }

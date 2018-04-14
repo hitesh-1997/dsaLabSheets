@@ -79,9 +79,9 @@ int hashfun(char *str,int base,int table)
 	int len = strlen(str);
 	for(i=0;i<len;i++){
 		//printf("%lld\n",sum);
-		sum+=(31*sum+str[i])%base%table;
+		sum+=(31*sum+str[i]+random())%base%table;
 	}
-	return (sum&MAXIMUM)%base%table; 
+	return (sum&MAXIMUM + random())%base%table; 
 	
 }
 
@@ -122,7 +122,7 @@ struct strbook* parser(){
                 exit(1);
         }
         char word[50];
-        while(fscanf(fp,"%49[^ ] ",word)!=EOF){
+        while(fscanf(fp,"%s",word)!=EOF){
                 if(isvalid(word)){
                       if(i>=size){
                                 book = (char**)myrealloc(book,2*size*sizeof(char*));
@@ -149,8 +149,8 @@ struct strbook* parser(){
 }
 
 int bestval(char **arr,int n){
-        int base[3]={611953,645667,642111};
-        int table[3]={5000,500,50};
+        int base[3]={1000000007,645667,642111};
+        int table[3]={500000,50000,5000};
         int i,j;
         int val = 99999999;
         int bestb=0;
@@ -183,7 +183,7 @@ Table createTable(int size){
 }
 
 Table insertAt(Table t,char **book,int j){
-	int index = hashfun(book[j],611953,t->size);
+	int index = hashfun(book[j],65842,t->size);
 	//printf("adding str- %s ,at index- %d\n",book[j],index);
 	t = insertAtEnd(t,t->adjlist[index],book[j],j);
 	return t;
@@ -260,15 +260,15 @@ int main(){
     char** book = st->book;
     int n = st->n;
     int i=0;
-   /* printf("pritning book\n");
+    printf("pritning book\n");
     for(i=0;i<n;i++){
     	printf("%s\n",book[i]);
-    }*/
-   // int sz = bestval(book,n);
+    }
+    int sz = bestval(book,n);
   //  printf("table size is:- %d\n",sz);
     Table t = createTable(10);
     int cost = insertAll(t,book,n);
-    printTable(t);
+    //printTable(t);
      printf("\n****************\n");
     printf("table stats:- \n");
     printf("table size:-%d\n",t->size);

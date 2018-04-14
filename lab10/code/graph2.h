@@ -1,26 +1,25 @@
 #ifndef GRAPH2_H
 #define  GRAPH2_H
 
+
+#include "hash.h"
 #include "linklist.h"
-
-struct vertex{
-	int data;
-};
-
-typedef struct vertex *Vertex;
 
 struct graph{
 	int num;
-	Vertex *vlist;
+	Hashtable vlist;
 	LL *elist;
+	struct record **arr;
 };
+
 typedef struct graph *Graph;
 
-int func(Graph g,Vertex v);
+
+
 Graph create(int num);
-LL getAdj(Graph g,Vertex v);
-Graph addedge(Graph g,Vertex v,Vertex vadj);
-int degree(Graph g,Vertex v);
-void bfs(Graph g);
+LL getAdj(Graph g,char *key);
+Graph addedge(Graph g,char *k1,char *k2);
+int degree(Graph g,char* v);
+void bfs(Graph g,int);
 
 #endif

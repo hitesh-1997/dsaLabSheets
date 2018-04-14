@@ -11,7 +11,7 @@ LL createList(){
 }
 
 void insertInFront(LL st,int data){
-	Node n = (Node)malloc(sizeof(struct node));
+    Node n = (Node)malloc(sizeof(struct node));
     n->data = data;
     n->next = st->head;
     st->head= n;

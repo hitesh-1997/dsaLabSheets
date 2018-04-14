@@ -1,0 +1,25 @@
+#ifndef HASH_H
+#define HASH_H
+
+struct record{
+	char *key;
+	int value;
+};
+
+typedef struct record *Record;
+
+struct hashtable{
+	struct record **list;
+	int size;
+};
+
+typedef struct hashtable *Hashtable;
+
+
+int hashfun(char *str,int table);
+Hashtable createTable(int size);
+Record createRec(char *key,int value);
+int insertRec(Hashtable t,char *key,int value);
+int findKey(Hashtable t,char *key);
+
+#endif

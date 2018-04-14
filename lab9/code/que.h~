@@ -8,18 +8,18 @@
 
 #include "tree.h"
 
-struct element{
+struct ele{
 	struct node* data;
-	struct element *next;
+	struct ele *next;
 };
 
 struct queue{
-	struct element *head;
-	struct element *tail;
+	struct ele *head;
+	struct ele *tail;
     int qsize;
 };
 
-typedef struct element *Element;
+typedef struct ele *Ele;
 typedef struct queue *Queue;
 
 #ifndef BOOLEAN_H
